@@ -33,7 +33,7 @@ public class States {
 		if( this.except != null && crtSymbol == this.except) {
 			return false;
 		}
-		if(transitions.containsKey(crtSymbol)) {
+		if(this.transitions.containsKey(crtSymbol)) {
 			return true;
 		}
 		if( this.defaultState != null) {
@@ -41,4 +41,33 @@ public class States {
 		}
 		return false;
 	}
+	
+	public States makeTransition(char crtSymbol) {
+
+		if(tryTransition(crtSymbol) == false ) {
+			return null;
+		}
+		if(this.transitions.containsKey(crtSymbol)) {
+			return transitions.get(crtSymbol);
+		}
+		return this.defaultState;
+	}
+
+	public boolean isFinalState() {
+		return isFinalState;
+	}
+
+	public void setFinalState(boolean isFinalState) {
+		this.isFinalState = isFinalState;
+	}
+
+	public TypeToken getTypeToken() {
+		return typeToken;
+	}
+
+	public void setTypeToken(TypeToken typeToken) {
+		this.typeToken = typeToken;
+	}
+	
+	
 }
