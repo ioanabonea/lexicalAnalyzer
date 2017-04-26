@@ -87,6 +87,21 @@ public class Main {
 			}
 		}
 		
+		String filepath = "input.in";
+		Dfa dfa = new Dfa(startState);
+		Scanner scanner = new Scanner(filepath,dfa);
+		Token token;
+		
+		do {
+			token = scanner.getNextToken();
+			if(token!=null) {
+				if(token.type == TypeToken.ERROR) {
+					System.out.println(token.value);
+					break;
+				}
+				System.out.println(token.toString());
+			}
+		}while(token!=null);
 		
 	}
 }

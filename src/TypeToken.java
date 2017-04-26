@@ -1,7 +1,7 @@
 public enum TypeToken {
 	
 	KEYWORD (1),
-	DENTIFIER (2),
+	IDENTIFIER (2),
 	STRING_LITERAL (3),
 	PUNCTUATOR (4),
 	CONSTANT_INTEGRAL_DEC (5),
@@ -13,7 +13,8 @@ public enum TypeToken {
 	CONSTANT_FLOAT_HEX (11),
 	CONSTANT_FLOAT (12),
 	INCLUDE_HEADER (13),
-	CHAR_LITERAL (14);
+	CHAR_LITERAL (14),
+	ERROR (-1);
 	
 	private final int type;
 	

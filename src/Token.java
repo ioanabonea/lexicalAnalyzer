@@ -1,9 +1,36 @@
+import java.util.ArrayList;
+
 public class Token {
 	
+	private static ArrayList<String> values;
+	TypeToken type;
+	int value;
 	
-	
-	Token(){
+	Token(TypeToken type,String value){
+		this.type =  type;
+		this.value = getIndex(value);
 		
+		if(this.type == TypeToken.IDENTIFIER) {
+			for( String s : keywords ) {
+				if(s.equals(value)) {
+					this.type = TypeToken.KEYWORD;
+					break;
+				}
+			}
+		}
+	}
+	
+	private static int getIndex(String value) {
+		int index = -1;
+		for(int i=0; i < values.size(); i++) {
+			if(values.get(i).equals(values)) {
+				index = i;
+				break;
+			}
+		}
+		values.add(value);
+		index = values.size()-1;
+		return index;
 	}
 	
 	private static final String keywords[] = { 
@@ -26,8 +53,10 @@ public class Token {
             "void", "volatile", 
             "while",
             "_Bool","_Complex","_Imaginary"};
+	@Override
+	public String toString(){
+		return type.toString() + " " + value;
+	}
 	
-	public static final char operators[] = { '+', '-', '*', '>', '<', '&','^' }; 
-    public static final char separators[] = { ',',';', '{', '}', '(', ')', '[', ']',':', '.','~','%','?','_' };
 
 }
