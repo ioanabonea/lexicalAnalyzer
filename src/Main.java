@@ -96,7 +96,7 @@ public class Main {
 			token = scanner.getNextToken();
 			if(token!=null) {
 				if(token.type == TypeToken.ERROR) {
-					System.out.println(token.value);
+					System.out.println(token.toString());
 					break;
 				}
 				System.out.println(token.toString());

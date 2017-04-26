@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Token {
 	
-	private static ArrayList<String> values;
+	private static ArrayList<String> values = new ArrayList<>();
 	TypeToken type;
 	int value;
 	
@@ -23,7 +23,7 @@ public class Token {
 	private static int getIndex(String value) {
 		int index = -1;
 		for(int i=0; i < values.size(); i++) {
-			if(values.get(i).equals(values)) {
+			if(values.get(i).equals(value)) {
 				index = i;
 				break;
 			}
@@ -55,7 +55,7 @@ public class Token {
             "_Bool","_Complex","_Imaginary"};
 	@Override
 	public String toString(){
-		return type.toString() + " " + value;
+		return type.toString() + " " + values.get(value);
 	}
 	
 

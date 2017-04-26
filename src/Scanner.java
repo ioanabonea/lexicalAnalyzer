@@ -44,10 +44,12 @@ public class Scanner {
 		if(dfa.isInFinalState()) {
 			return new Token(dfa.getToken(),tokenValue.toString());
 		}
+		if(crtIndex >= fisInput.length())
+			return null;
 		String mess = "Automatul s-a blocat in starea "+ dfa.getStateName()+" incercand sa proceseze caracterul "
 						+fisInput.charAt(crtIndex)+" de pe pozitia "+crtIndex;
-		return new Token(TypeToken.ERROR,mess);
 		
+		return new Token(TypeToken.ERROR,mess);
 	}
 	
 	public boolean skipCharacters() {
@@ -62,9 +64,10 @@ public class Scanner {
 		int auxIndex = crtIndex;
 		if(crtIndex < fisInput.length()-1 && fisInput.charAt(crtIndex) == '/' && fisInput.charAt(crtIndex+1) == '*' ) {
 			crtIndex += 2;
-			while( crtIndex < fisInput.length()  && fisInput.charAt(crtIndex-1) == '*' && fisInput.charAt(crtIndex) == '/') {
+			while( crtIndex < fisInput.length()-1  && (fisInput.charAt(crtIndex) != '*' || fisInput.charAt(crtIndex+1) != '/')) {
 				crtIndex++;
 			}
+			crtIndex += 2;
 		}
 		if(crtIndex < fisInput.length()-1 && fisInput.charAt(crtIndex) == '/' && fisInput.charAt(crtIndex+1) == '/') {
 			crtIndex += 2;
