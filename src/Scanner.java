@@ -1,8 +1,5 @@
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 public class Scanner {
@@ -26,6 +23,13 @@ public class Scanner {
 		crtIndex = 0;
 		
 	}
+	
+	/*analizorul lexical va folosi un automat finit determinist, care va avea
+           cate o stare finala pentru fiecare tip de token;
+      pentru identificarea tokenilor, el va consuma pe rand caractere din
+           fisierul sursa si va face tranzitii in automat, pana se blocheaza
+           (deci nu pana ajunge prima data intr-o stare finala);
+      daca s-a blocat intr-o stare nefinala, atunci s-a intalnit o eroare*/
 	
 	public Token getNextToken() {
 		
@@ -67,7 +71,10 @@ public class Scanner {
 			while( crtIndex < fisInput.length()-1  && (fisInput.charAt(crtIndex) != '*' || fisInput.charAt(crtIndex+1) != '/')) {
 				crtIndex++;
 			}
-			crtIndex += 2;
+			if( crtIndex - auxIndex == 2)
+				crtIndex = auxIndex;
+			else
+				crtIndex += 2;
 		}
 		if(crtIndex < fisInput.length()-1 && fisInput.charAt(crtIndex) == '/' && fisInput.charAt(crtIndex+1) == '/') {
 			crtIndex += 2;

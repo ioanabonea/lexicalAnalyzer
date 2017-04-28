@@ -12,6 +12,7 @@ public class Main {
 
 	public static void main(String[] args) throws Exception {
 	      
+		@SuppressWarnings("resource")
 		BufferedReader reader = null;
 		StatesMap = new HashMap<String,States>();
 		String crtLine;

@@ -851,7 +851,7 @@ composed+ + composed++
 composed+ = composed+=
 start < composed<
 composed< < composed<<
-composed< <= composed<=
+composed< = composed<=
 composed<< = composed<<=
 composed< : composed<:
 composed< % composed<%
